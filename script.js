@@ -35,7 +35,7 @@ function generatePassword() {
   var passwordLength = prompt(
     "Please choose length of password. Must be between 8 and 128."
   );
-  var numbers = confirm("Dou you want numbers?");
+  var numbers = confirm("Do you want numbers?");
   var specialChars = confirm("Do you want special characters?");
   var upperCase = confirm("Do you want upper-case?");
   var lowerCase = confirm("Do you want lowercase?");
@@ -123,4 +123,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
