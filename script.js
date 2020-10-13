@@ -29,6 +29,38 @@ var alphabetLower = [
   "y",
   "Z",
 ];
+var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var char = [
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "-",
+  "_",
+  "+",
+  "=",
+  "{",
+  "}",
+  "[",
+  "]",
+  ":",
+  ";",
+  "<",
+  ">",
+  ",",
+  ".",
+  "?",
+  "~",
+  "`",
+];
+var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
+
 
 // Write password to the #password input
 // Function to generate password
@@ -52,23 +84,27 @@ function generatePassword() {
 
   //If statements for each character condition
   if (numbers) {
-    generatePasswordFunctions.push(generateRandomNumber);
+    generatePasswordFunctions.push(generateRandomNumber());
+    generatePasswordFunctions = generatePasswordFunctions.concat(numbers);
   }
   if (specialChars) {
-    generatePasswordFunctions.push(generateRandomSpecial);
+    generatePasswordFunctions.push(generateRandomSpecial());
+    generatePasswordFunctions = generatePasswordFunctions.concat(specialChars);
   }
   if (upperCase) {
-    generatePasswordFunctions.push(generateRandomUpper);
+    generatePasswordFunctions.push(generateRandomUpper());
+    generatePasswordFunctions = generatePasswordFunctions.concat(upperCase);
   }
   if (lowerCase) {
-    generatePasswordFunctions.push(generateRandomLower);
+    generatePasswordFunctions.push(generateRandomLower());
+    generatePasswordFunctions = generatePasswordFunctions.concat(lowerCase);
   }
   //For loop to generate random variable
   for (var i = 0; i < passwordLength; i++) {
     var randonFunctionindex =
       Math.floor(Math.random() * generatePasswordFunctions.length);
     var randomFunction = generatePasswordFunctions[randonFunctionindex];
-    var randomCharacter = randomFunction();
+    var randomCharacter = randomFunction;
 
     //pushes password
     password.push(randomCharacter);
@@ -79,41 +115,12 @@ function generatePassword() {
 
 // generate random functions
 function generateRandomNumber() {
-  var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  var numberIndex = Math.floor(Math.random() * numeric.length);
+    var numberIndex = Math.floor(Math.random() * numeric.length);
   return numeric[numberIndex];
 }
 // function for special characters stored in global
 function generateRandomSpecial() {
-  var char = [
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "^",
-    "&",
-    "*",
-    "(",
-    ")",
-    "-",
-    "_",
-    "+",
-    "=",
-    "{",
-    "}",
-    "[",
-    "]",
-    ":",
-    ";",
-    "<",
-    ">",
-    ",",
-    ".",
-    "?",
-    "~",
-    "`",
-  ];
+  
 }
 function generateRandomUpper() {
   var upper = alphabetLower[Math.floor(Math.random() * alphabetLower.length)];
