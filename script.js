@@ -95,6 +95,10 @@ function generatePassword() {
   if (lowerCase) {
     generatePasswordFunctions.push(generateRandomLower);
   }
+  if (numbers === false && specialChars === false && upperCase === false && lowerCase === false) {
+    alert("retry")
+    writePassword()
+  }
 
   //For loop to generate random variable
   for (var i = 0; i < passwordLength; i++) {
