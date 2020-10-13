@@ -84,27 +84,24 @@ function generatePassword() {
 
   //If statements for each character condition
   if (numbers) {
-    generatePasswordFunctions.push(generateRandomNumber());
-    generatePasswordFunctions = generatePasswordFunctions.concat(numbers);
-  }
+    generatePasswordFunctions.push(generateRandomNumber);
+     }
   if (specialChars) {
-    generatePasswordFunctions.push(generateRandomSpecial());
-    generatePasswordFunctions = generatePasswordFunctions.concat(specialChars);
-  }
+    generatePasswordFunctions.push(generateRandomSpecial);
+    }
   if (upperCase) {
-    generatePasswordFunctions.push(generateRandomUpper());
-    generatePasswordFunctions = generatePasswordFunctions.concat(upperCase);
+    generatePasswordFunctions.push(generateRandomUpper);
   }
   if (lowerCase) {
-    generatePasswordFunctions.push(generateRandomLower());
-    generatePasswordFunctions = generatePasswordFunctions.concat(lowerCase);
+    generatePasswordFunctions.push(generateRandomLower);
   }
+
   //For loop to generate random variable
   for (var i = 0; i < passwordLength; i++) {
     var randonFunctionindex =
       Math.floor(Math.random() * generatePasswordFunctions.length);
-    var randomFunction = generatePasswordFunctions[randonFunctionindex];
-    var randomCharacter = randomFunction;
+    var randomFunction = generatePasswordFunctions[randonFunctionindex];  
+    var randomCharacter = randomFunction();
 
     //pushes password
     password.push(randomCharacter);
@@ -120,15 +117,16 @@ function generateRandomNumber() {
 }
 // function for special characters stored in global
 function generateRandomSpecial() {
-  
+  var specialCharIndex = Math.floor(Math.random() * char.length);
+  return char[specialCharIndex];
 }
 function generateRandomUpper() {
-  var upper = alphabetLower[Math.floor(Math.random() * alphabetLower.length)];
-  return upper.toUpperCase();
+  var upperIndex = Math.floor(Math.random() * alphabetLower.length);
+  return upper[upperIndex];
 }
 function generateRandomLower() {
-  var lower = alphabetLower[Math.floor(Math.random() * alphabetLower.length)];
-  return lower;
+  var lowerIndex = Math.floor(Math.random() * upper.length);
+  return alphabetLower[lowerIndex];
 }
 // prescripted code
 function writePassword() {
