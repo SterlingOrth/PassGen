@@ -61,14 +61,13 @@ var char = [
 ];
 var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
-
 // Write password to the #password input
 // Function to generate password
 function generatePassword() {
   var passwordLength = prompt(
     "Please choose length of password. Must be between 8 and 128."
   );
-  //Variables to store User answer
+  //Variables to store User response
   var numbers = confirm("Do you want numbers?");
   var specialChars = confirm("Do you want special characters?");
   var upperCase = confirm("Do you want upper-case letters?");
@@ -95,6 +94,7 @@ function generatePassword() {
   if (lowerCase) {
     generatePasswordFunctions.push(generateRandomLower);
   }
+  //sends user to beginning if they chose none of the options
   if (numbers === false && specialChars === false && upperCase === false && lowerCase === false) {
     alert("retry")
     writePassword()
